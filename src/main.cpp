@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <cmath>
 
 constexpr double c { 299792458.0 };
 constexpr double zero { 0.0 };
