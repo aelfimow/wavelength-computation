@@ -5,6 +5,6 @@ CXXFLAGS += -pedantic
 CXXFLAGS += -Weffc++
 CXXFLAGS += -std=c++17
 
-all: clflush_func
+all:
 	$(CXX) -c *.cpp $(CXXFLAGS)
 	$(CXX) *.o -o wavelength.exe $(CXXFLAGS)
