@@ -4,8 +4,8 @@
 #include <stdexcept>
 #include <map>
 
-constexpr double c { 299792458.0 };
-constexpr double zero { 0.0 };
+#include "formula.h"
+
 
 int main(int argc, char *argv[])
 try
@@ -14,6 +14,8 @@ try
     {
         throw std::invalid_argument("Usage: frequency prefix epsilon");
     }
+
+    constexpr double zero { 0.0 };
 
     auto frequency { zero };
     {
@@ -54,9 +56,11 @@ try
     std::cout << "Frequency: " << frequency << " " << prefix << std::endl;
     std::cout << "Epsilon: " << epsilon << std::endl;
 
-    auto const lambda = c / (frequency * mult_value * std::sqrt(epsilon));
+    formula::param_set1 const param_set { frequency * mult_value, epsilon };
 
-    std::cout << "Wavelength: " << lambda << " m" << std::endl;
+    formula func { param_set };
+
+    std::cout << "Wavelength: " << func.lambda() << " m" << std::endl;
 
     return EXIT_SUCCESS;
 }
