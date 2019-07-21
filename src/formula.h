@@ -12,9 +12,20 @@ class formula
             double epsilon;
         };
 
+        struct param_set2
+        {
+            double lambda;
+            double epsilon;
+        };
+
     public:
         formula(param_set1 const &param);
+        formula(param_set2 const &param);
         ~formula();
+
+        double frequency() const;
+        double lambda() const;
+        double epsilon() const;
 
     private:
         double const m_freq;
